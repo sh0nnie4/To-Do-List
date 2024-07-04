@@ -1,8 +1,27 @@
 import React from 'react'
-import ReactDom from 'react-dom'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { store } from "redux/store";
+import ConnectedApp from "./app";
 
-const App = () => {
-    return <div>Hello world</div>;
+
+const ReduxApp = () => {
+return (
+    <Provider store={store}>
+<ConnectedApp />
+    </Provider>
+);
 };
 
-ReactDom.render(<App />, document.getElementById("root"));
+
+
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
